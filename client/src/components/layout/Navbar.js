@@ -1,31 +1,57 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import LogOutBtn from "../auth/LogOutBtn";
 
-import './Navbar.css';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavLink,
+  NavItem,
+  Container
+} from 'reactstrap';
 
-function Navbar() { 
+function AppNavbar() {
+  const { loggedIn } = useContext(AuthContext);
 
-  const {loggedIn} = useContext(AuthContext);    // boolean
+  const [isOpen, setisOpen] = useState(false);
 
-    return (
-      <div>
-        <Link to="/">Home</Link>
-        {loggedIn === false && (
-          <>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Log in</Link>
-          </>
-        )}
-        {loggedIn === true && (
-          <>
-            <Link to="/customer">Customers</Link>
-            <LogOutBtn/>
-          </>
-        )}
-      </div>
-    );
+  const toggle = ()=>{
+    setisOpen(!isOpen);
   }
-  
-  export default Navbar;
+
+  return (
+    <div>
+      <Navbar color="dark" dark expand="sm" className="mb-5">
+        <Container>
+          <NavbarBrand><NavLink href="/">Chilimon</NavLink></NavbarBrand>
+          <NavbarToggler onClick={toggle}/>
+          <Collapse isOpen={isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/">Home</NavLink>
+              </NavItem>
+              {loggedIn === false && (
+                <>
+                  <NavLink href="/register">Register</NavLink>
+                  <NavLink href="/login">Log in</NavLink>
+                </>
+              )}
+              {loggedIn === true && (
+                <>
+                  <NavLink href="/customer">Customers</NavLink>
+                  <LogOutBtn />
+                </>
+              )}
+              
+            </Nav>
+          </Collapse>
+        </Container>
+      </Navbar>
+    </div>
+  );
+}
+
+export default AppNavbar;

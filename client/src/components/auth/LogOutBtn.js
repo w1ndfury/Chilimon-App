@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
+import { Button } from 'reactstrap';
+
 function LogOutBtn() {
   const { getLoggedIn } = useContext(AuthContext);
 
@@ -14,7 +16,7 @@ function LogOutBtn() {
     history.push("/");
   }
 
-  return <button onClick={logOut}>Log out</button>;
+  return <Button outline color="secondary" size="sm" onClick={logOut}>Log out</Button>;
 }
 
 export default LogOutBtn;
