@@ -1,0 +1,13 @@
+.home-item{
+    text-align: center;
+    height: 24vh;
+    font-size: 30px;
+    margin-bottom: 30px;
+    border: 3px solid grey;
+    padding-top: 60px;
+}
+
+.home-item2{
+    text-align: center;
+    height: 20vh;
+}

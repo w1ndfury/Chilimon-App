@@ -13,6 +13,8 @@ import {
   Container
 } from 'reactstrap';
 
+import logo from '../../assets/chi.ico'
+
 function AppNavbar() {
   const { loggedIn } = useContext(AuthContext);
 
@@ -26,7 +28,9 @@ function AppNavbar() {
     <div>
       <Navbar color="dark" dark expand="sm" className="mb-5">
         <Container>
-          <NavbarBrand><NavLink href="/">Chilimon</NavLink></NavbarBrand>
+          <NavbarBrand>
+            <NavLink href="/"><img src={logo} alt=""></img></NavLink>
+          </NavbarBrand>
           <NavbarToggler onClick={toggle}/>
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>

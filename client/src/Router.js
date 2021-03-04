@@ -5,6 +5,9 @@ import Login from './components/auth/Login'
 import Navbar from "./components/layout/Navbar"
 import AuthContext from "./context/AuthContext";
 import Customers from "./components/customers/Customers";
+import Home from "./components/home/home";
+
+
 
 function Router() {
 
@@ -15,7 +18,7 @@ function Router() {
             <Navbar />
             <Switch>
                 <Route exact path="/">
-                    <div>Home</div>
+                    <Home />                 
                 </Route>
                 {loggedIn === false && (
                     <>
