@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext";
+import CustomersNumContext from '../../context/CustomersNumContext';
 import LogOutBtn from "../auth/LogOutBtn";
 
 import {
@@ -10,13 +11,15 @@ import {
   Nav,
   NavLink,
   NavItem,
-  Container
+  Container,
+  Label
 } from 'reactstrap';
 
 import logo from '../../assets/chi.ico'
 
 function AppNavbar() {
   const { loggedIn } = useContext(AuthContext);
+  const [customersNumber, setCustomersNumber] = useContext(CustomersNumContext);
 
   const [isOpen, setisOpen] = useState(false);
 
@@ -24,6 +27,7 @@ function AppNavbar() {
     setisOpen(!isOpen);
   }
 
+ 
   return (
     <div>
       <Navbar color="dark" dark expand="sm" className="mb-5">
@@ -33,7 +37,13 @@ function AppNavbar() {
           </NavbarBrand>
           <NavbarToggler onClick={toggle}/>
           <Collapse isOpen={isOpen} navbar>
+              {loggedIn === true && (
+                <>
+                  <Label style={{"margin-right":"50%", "color":"white"}}>Current Customers: {customersNumber.length}</Label>
+                </>
+              )}
             <Nav className="ml-auto" navbar>
+              
               <NavItem>
                 <NavLink href="/">Home</NavLink>
               </NavItem>

@@ -3,6 +3,8 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
+import { Button, Form, FormGroup, Input, Col, Container} from 'reactstrap';
+
 function Login() {
 
     const [email, setEmail] = useState("");
@@ -31,22 +33,40 @@ function Login() {
 
     return (
         <div>
-            <h1>Login</h1>
-            <form onSubmit={login}>
-                <input
+          <Container className="themed-container" fluid="sm" style={{ "height": "100vh" }}>
+            <FormGroup className="justify-content-md-center" row>
+              <Col sm={8}>
+                <h1>Login</h1>
+              </Col>
+            </FormGroup>
+            <Form onSubmit={login}>
+              <FormGroup className="justify-content-md-center" row>
+                <Col sm={8}>
+                  <Input
                     type="email"
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                />
-                <button type="submit">Log in</button>
-            </form>
+                  />
+                </Col>
+              </FormGroup>
+              <FormGroup className="justify-content-md-center" row>
+                <Col sm={8}>
+                  <Input
+                      type="password"
+                      placeholder="Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                  />
+                </Col>             
+              </FormGroup>
+              <FormGroup className="justify-content-md-center" row>
+                <Col sm={8}>    
+                  <Button type="submit">Log in</Button>
+                </Col>
+              </FormGroup>  
+            </Form>
+          </Container>
         </div>
     )
 }

@@ -6,10 +6,11 @@ const auth = require("../middleware/auth");
 
 router.post("/", auth, async (req, res) => {        //auth ---> middleware function  (first runs auth, after the request)
     try {
-      const { name } = req.body;
+      const { name, age } = req.body;
            
       const newCustomer = new Customer({
         name,
+        age,
       });
   
       const savedCustomer = await newCustomer.save();
